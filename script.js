@@ -30,6 +30,7 @@ for (let i = 7; i < 19; i++) {
   } else if (i > time) {
     activitySpace.addClass("future");
   }
+  activitySpace.val(localStorage.getItem("button" + i))
   const saveBtn = $("<button>");
   saveBtn.addClass("saveBtn col-md-1");
   $(".container").append(timeSlotRow);
@@ -48,14 +49,9 @@ for (let i = 7; i < 19; i++) {
   activitySpace.attr("id", "text" + i);
 }
 
-const activities = [];
-
-activitySpace.submit(function(){
-  const newEvent = activitySpace.value.trim;
-  
+$(".saveBtn").on("click", function(){
+  const schedAct = $(this).siblings("textarea").val();
+  const btnID = $(this).attr("id");
+  localStorage.setItem(btnID, schedAct);
 })
-
-function storedEvents() {
-  localStorage.setItem("events" + saveBtn.id, JSON.stringify(activities));
-}
 
