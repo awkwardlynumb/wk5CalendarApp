@@ -37,10 +37,25 @@ for (let i = 7; i < 19; i++) {
   timeSlotRow.append(activitySpace);
   timeSlotRow.append(saveBtn);
   if (i < 12 ) {
-      hourBlock.text(i + "AM")
+      hourBlock.text(i + "AM");
   } else if (i === 12) {
-      hourBlock.text("12PM")
+      hourBlock.text("12PM");
   } else if (i > 12) {
-      hourBlock.text(i - 12 + "PM")
+      hourBlock.text(i - 12 + "PM");
   }
+  saveBtn.text("Save");
+  saveBtn.attr("id", "button" + i);
+  activitySpace.attr("id", "text" + i);
 }
+
+const activities = [];
+
+activitySpace.submit(function(){
+  const newEvent = activitySpace.value.trim;
+  
+})
+
+function storedEvents() {
+  localStorage.setItem("events" + saveBtn.id, JSON.stringify(activities));
+}
+
